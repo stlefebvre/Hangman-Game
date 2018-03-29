@@ -24,15 +24,22 @@ Game process:
 
 */
 
+//*====================================== VARIABLES =====================================
 //*Setting varable for all keystrokes
 var anyKey = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 
 //*Setting variable for producers inside the word bank
-var wordBank = ["DJ Premier", "Kanye West", "J Dilla", "Nujabes"];
+var wordBank = ["DJPremier", "KanyeWest", "JDilla", "Nujabes"];
 //You'll have to run a for loop for this, so on iteration 1 the user is trying to spell "DJ Premier," iteration 2 is trying to spell "Kanye West," etc. 
 
 //*Setting variable for alotted number of guesses
 var guess = 15;
+
+//*Setting variable for wins
+var wins = 0
+
+//* Setting variable for losses
+var losses = 0
 
 //*Setting variable to randomly select a word for the game to start on
 var wordBankStart = wordBank[Math.floor(Math.random() * wordBank.length)];
@@ -40,20 +47,50 @@ var wordBankStart = wordBank[Math.floor(Math.random() * wordBank.length)];
 //*Setting empty array to contain the answers 
 var answerArray = [];
     //*Setting For Loop so that on each iteration, answerArray is filled with underscores up to the length of a word in the wordBank length (for example, on the "Kanye West" iteration, answerArray would be filled with 9 underscores)
-    for (var i = 0; i < wordBank.length; i++) {
-    answerArray[i] = "_";
+    for (var i = 0; i < wordBankStart.length; i++) {
+        answerArray[i] = "_";
+    };
+
+//*Adds a new div within the current-word div
+$("#current-word").append("newDiv")
+
+debugger;
+//*buggy boi for testing to see if answerArray displays on the page.
+
+//Displays the answerArray on the page
+answerArray.each(function(answerArray) {
+    newDiv.append("<div>" + answerArray + "</div>")
+});
+
+//*Setting variable for letter of word youre guessing
+var answerArrayLetters = wordBank.indexOf(wordBankStart)
+    //*Setting Loop for answerArrayLetters to be funneled into answerArray
+    for (var j = 0; j < wordBankStart.length; j++) {
+        if (answerArrayLetters[j] === wordBankStart) {
+            answerArray
+        }
     }
+
+
+//*Setting Remaining Guesses variable
+var remainingGuesses = function () {
+    //*Setting for loop to update remaining guesses after a correct guess. Use var j because i is already used 
+    for (var j = 0; j < wordBankStart.length; j++) {
+        //
+        if (wordBankStart[j] === wordBankStart) {
+        answerArray[j] = wordBankStart;
+        guesses--;
+        };};
+}
+
+//*===================================== FUNCTIONS ================================
 
 //*Setting function to capture user's keystroke
 document.onkeyup = function(event) {
-
     //*Setting variable so that it equals any key pressed
     var e = event.key;
     console.log(e);
-
         //*Setting correct guessed key codes for first iteration, see if there's a way to write an object for more efficient code
         if ((e === "d") || (e === "j") || (e === "p") || (e === "r") || (e === "e") || (e === "m" )) 
-            console.log("you pressed a key!");
-        };
-
-
+            console.log(answerArray);
+};
