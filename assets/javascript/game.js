@@ -52,13 +52,12 @@ var answerArray = [];
     };
 
 //*Adds a new div within the current-word div
-$("#current-word").append("newDiv")
+$("#current-word").on("click").append("newDiv", "<div>" + answerArray + "</div>")
 
 debugger;
-//*buggy boi for testing to see if answerArray displays on the page.
 
 //Displays the answerArray on the page
-answerArray.each(function(answerArray) {
+answerArray.each(function() {
     newDiv.append("<div>" + answerArray + "</div>")
 });
 
@@ -91,6 +90,7 @@ document.onkeyup = function(event) {
     var e = event.key;
     console.log(e);
         //*Setting correct guessed key codes for first iteration, see if there's a way to write an object for more efficient code
-        if ((e === "d") || (e === "j") || (e === "p") || (e === "r") || (e === "e") || (e === "m" )) 
-            console.log(answerArray);
-};
+        if (e === indexOf(wordBankStart)) {
+            console.log(answerArrayLetters)
+        };
+    };
